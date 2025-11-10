@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
         float v= ARAVRInput.GetAxis("Vertical");
         Vector3  dir = new Vector3(h,0,v);
 
+        dir = Camera.main.transform.TransformDirection(dir);
 
         yvelocity += gravity * Time.deltaTime;
 
@@ -42,8 +43,9 @@ public class PlayerMove : MonoBehaviour
 
         if(jumpis == 0 & ARAVRInput.GetDown(ARAVRInput.Button.Two, ARAVRInput.Controller.RTouch)){
             jumpis = 1;
+            
             yvelocity = jumpPower;
-            Debug.Log(jumpis);
+
         }
     }
 
